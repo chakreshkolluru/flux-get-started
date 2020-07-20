@@ -1,5 +1,6 @@
+---
 apiVersion: apps/v1
-kind: Deployment 
+kind: Deployment
 metadata:
   name: front-end
   annotations:
@@ -16,11 +17,10 @@ spec:
         name: ui
     spec:
       containers:
-        - name: jsp
-          image: chakreshkolluru/web-jsp:1.0
-          ports:
-          - containerPort: 8080
-
+      - name: jsp
+        image: chakreshkolluru/web-jsp:1.1
+        ports:
+        - containerPort: 8080
 ---
 
 apiVersion: v1
@@ -32,6 +32,6 @@ spec:
   selector:
     name: ui
   ports:
-    - protocol: TCP
-      port: 8080
-      targetPort: 8080
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
