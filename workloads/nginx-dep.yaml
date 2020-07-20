@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deploy
+spec:
+  replicas: 3
+  minReadySeconds: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app: nginxapp
+  template:
+    metadata:
+      labels: 
+        app: nginxapp
+    spec:          
+      containers:
+        - name: nginx-cont
+          image: nginx
+          ports:
+          - containerPort : 80
+          resources:
+            limits:
+              cpu: "100m"
+              memory: "500Mi"
+            requests:
+              cpu: "100m"   
+              memory: "50Mi" 
