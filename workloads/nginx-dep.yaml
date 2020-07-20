@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: nginx-deploy
 spec:
-  replicas: 6
+  replicas: 2
   minReadySeconds: 5
   strategy:
     type: RollingUpdate
